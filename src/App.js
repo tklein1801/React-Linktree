@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import img from "./assets/img/me.jpg";
+import "./App.scss";
 
 function App() {
+  let links = require("./assets/data/links.json");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="header">
+        <img className="me" src={img} alt="Image of mine" />
+        <h2 className="title">Thorben</h2>
+      </div>
+      <div className="body">
+        <div className="link-container">
+          {links.map((link, i) => {
+            return (
+              <a className="link" href={link.url} key={i}>
+                {link.name}
+              </a>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
